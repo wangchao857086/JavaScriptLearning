@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript学习练习</title>
+    <script
+ type="text/javascript">
+    'use strict'
+    //alert("Hello World!");
+    //var a = 1+2+3;//这是注释
+    /*
+         这里是块注释
+		*/
+    //alert(a);
+
+    //var abc = 'helloWorld';
+    /*
+         字符串中有单引号和双引号
+         var abc = 'I\'am not \"OK\"' //既有单引号又有双引号 
+		alert(abc);
+		*/
+    /*
+          快速表示多行字符  还有一种就是\n分割 
+          var a = `多行数据1
+		         多行数据2
+		         多行数据3`
+		  alert(a);
+         */
+
+
+    //字符串操作
+
+    /*
+            1.字符串的长度
+            var s = 'This is a string';
+		    alert(s.length);// 16
+		    2.要获取字符串某个指定位置的字符，使用类似Array的下标操作，索引号从0开始
+            var s = 'This is a string';
+             alert(s[15]);  //g
+             undefined 超出范围的索引不会报错，但一律返回undefined
+            3.需要特别注意的是，字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果：
+            var s = 'This is a string';
+             s[0] = 'X';
+                 alert(s);
+            4.常用方法
+                 var s = 'This is a string';
+                 alert(s.toUpperCase());
+                 alert(s.toLowerCase());
+                 alert(s.indexOf('a'));
+                 alert(s.substring(0,5));//不包括5
+         */
+    
+    //数组的操作
+     var arr = ['123','2','hehe'];
+     //给数组赋值直接改变数组
+     arr[0]='12';
+     alert(arr);
+     //.length 属性取得array的长度
+     alert(arr.length);
+
+     // 直接给array的length赋值会导致array大小的变化
+     arr.length = 10;
+     alert(arr);
+     //通过索引赋值时索引超过了范围，同样会引起Array的大小的变化  编写代码时不建议直接修改Array的大小，访问索引确保索引不越界。
+     
+     //indexOf函数
+     alert('indexOf函数');
+    alert(arr.indexOf('2'));//1
+    alert(arr.indexOf('123'));//没找到  -1
+     // slice函数   截取Array的部分元素，然后返回一个Array
+     alert('slice函数');
+     var arr1 = arr.slice(0,3);
+     alert(arr1);
+     var arr2 = arr.slice(3);
+     alert(arr2);
+     //如果不给slice传递任何参数，他就会从头到尾截取所有的元素，利用这一个特点，我们可以很容易的复制一个Array
+     var Array = ['1','2','3','4','5','6'];
+     var arrCopy = Array.slice();
+     alert(Array === arrCopy);//不能用===判断数组是否相等  
+     alert(Array.toString()=== arrCopy.toString());
+     alert(arrCopy);
+     
+     // push 和  pop 函数
+     //push向Array的末尾添加若干元素，pop则把Array的最后一个元素去掉
+     alert('push和pop函数');
+     var array = ['1','2'];
+     array.push('A',"B");//添加两个元素
+     alert(array);
+     alert(array.pop());//移除数组末尾的B
+     alert(array);
+     array.pop();
+     alert(array);
+
+    //unshift和shift函数  如果要在Array的头部添加若干元素，使用unshift方法，shift方法则把Array的第一个元素删掉
+     alert('unshift和shift函数');
+     var arrShift = [1,2];
+     arrShift.unshift('A','B');
+     alert(arrShift);
+     arrShift.shift();
+     alert(arrShift);
+
+     //sort函数
+     arr.sort();//按照默认顺序排序   Array的sort方法默认把所有的元素都转换成string再排序，不能直接对数字排序
+     //幸运的是，sort（）方法也是一个高阶函数，他还可以接受一个比较函数实现自定义的排序
+     var numberArr = [10,20,1,2];
+     arr.sort(function(x,y)
+         {
+
+         	if (x<y) 
+         	{
+         		return -1;
+         	}
+         	if (x>y)
+         	 {
+         	 	return 1;
+         	 }
+         	 return 0;
+         }
+
+     	);
+     //reverse函数
+     arr.reverse();//反转数组的元素  
+     //splice函数
+     alert('splice函数');
+     var arrSite = ['1','2','3','4','5','6'];
+     arrSite.splice(2,3,'haha','hehe');//从索引二开始，删除三个元素，再添加两个元素
+     arrSite.splice(2,3);//只删除不添加
+     arrSite.splice(2,0,"heihie","hahalslfos");//只添加不删除
+     alert(arrSite);
+     //contact函数  把当前的Array和另一个Array连接起来，返回一个新的Array.可以接受任意个元素和Array，并且自动把Array拆开，然后全部添加到Array里
+     var ar = [123];
+     var aradd = ar.concat(['4','5']);
+     alert(aradd);
+     // join函数   把当前的每个元素用指定的字符串连接起来，然后返回连接后的字符串。元素不是字符串，自动转换成字符串后连接。
+     var str = aradd.join('@');
+     alert(str);
+
+     //在新生欢迎会上，你已经拿到了新同学的名单，请排序后显示：欢迎XXX，XXX，XXX和XXX同学！：
+     var nameArray = ['王菲','张菲','李明','夏明','王亮'];
+     //1.给数组排序
+     var sortArray = nameArray.sort();
+     alert(sortArray);
+     //取出除最后姓名的名字集合
+     var lastName = sortArray.pop();
+     //逗号拼接前边的姓名
+     var nameString = sortArray.join(',');
+     alert(nameString);
+     
+     alert('欢迎'+nameString +'和'+lastName.toString());
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
