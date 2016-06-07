@@ -8,7 +8,8 @@
     <script type="text/javascript">
     'use strict'
     //判断语句
-    var height = 1.72;
+    /*
+var height = 1.72;
     var weight = 74.5;
     var bmi = weight/(height*height);
     if (bmi < 18.5) {
@@ -25,6 +26,51 @@
     }
     else{
     	alert('严重肥胖');
+    }
+    */
+    //循环
+    //1*2*3.......*10
+    var s = 1;
+    for (var i = 1; i <= 10; i++) {
+    	s = s * i;
+    }
+    alert(s);
+
+    //for循环遍历数组
+    var array = ['Apple','Google','Baidu','Sina'];
+    for (var i = 0; i < array.length; i++) {
+    	alert(array[i]);
+    }
+    //for in 遍历
+    var obj = {
+    	name:'Jack',
+    	age: 20
+    };
+    for(var key in obj){
+    	if (obj.hasOwnProperty(key)) {}
+    	alert(key);
+    	alert(obj.age);
+    }
+    //for in 可以循环出数组的索引
+    //for ... in对Array的循环得到的是String而不是Number。
+    for(var i in array){
+    	alert(i);
+    	alert(array[i]);
+    }
+    //while 循环
+    var j = 0;
+    var s = 0;
+    while(j<100)
+    {
+    	j = j+1;
+    	s = s +j;
+    }
+    alert(s);
+    //请利用循环遍历数组中的每个名字，并显示Hello, xxx!
+    var arr = ['Adam','Bob','Petter','Marry','Danny'];
+    for (var i = 0; i < arr.length; i++) {
+    	var string = 'Hello,'+arr[i]+'!';
+    	alert(string);
     }
     </script>
 </head>
